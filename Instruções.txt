@@ -1,0 +1,30 @@
+Instalação Python 3.10.6
+
+Dentro da pasta criada
+python -m venv venv
+venv\Scripts\activate
+
+Se o script der erro de segurança  , temos de permitir scripts:
+Powershell como administrador : Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Y
+
+venv\Scripts\activate
+
+pip install -r requirements.txt
+
+
+python .\chatbot.py  
+
+
+Neste momento, quando se corre o chatbot, ele verifica se existem os dois modelos na pasta models, caso não existam, é feito o download.
+É também verificado se existam as bases de dados FAISS na pasta vector_db, se não existirem , os scripts são inicializados e são criadas com base no contexto.
+
+Os contextos estão na pasta contexts.
+
+Para processar os contextos com o FAISS, existe um script para cada contexto. Alguma alteração feita nos contextos ou na forma de separar os contextos em bocados mais pequenos ou maiores, é necessário correr novamente
+para criar novas bases de dados FAISS.
+
+
+O script query.py também funciona como teste, podem colocar a pergunta e verificar qual o contexto que é retirado da base de dados FAISS atual.
+
+Quando existe uma pergunta é feito o print para debug de toda a informação que está a ser recolhida e de onde é gerada a resposta. Depois apagamos a linha.
