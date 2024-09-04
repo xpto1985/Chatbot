@@ -12,12 +12,11 @@ venv\Scripts\activate
 
 pip install -r requirements.txt
 
-
+python .\downloadmodels.py  
 python .\chatbot.py  
 
 
-Neste momento, quando se corre o chatbot, ele verifica se existem os dois modelos na pasta models, caso não existam, é feito o download.
-É também verificado se existam as bases de dados FAISS na pasta vector_db, se não existirem , os scripts são inicializados e são criadas com base no contexto.
+É verificado se existam as bases de dados FAISS na pasta vector_db, se não existirem , os scripts são inicializados e são criadas com base no contexto.
 
 Os contextos estão na pasta contexts.
 
