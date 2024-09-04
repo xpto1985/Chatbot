@@ -57,12 +57,11 @@ def download_gguf_model_if_needed(model_url, model_filename, save_directory='mod
 if __name__ == "__main__":
     # Configurações do modelo sentence-transformers
     sentence_model_name = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
-    
     # Verifica e faz o download do modelo sentence-transformers, se necessário
     sentence_model_path = download_sentence_transformer_model_if_needed(sentence_model_name)
 
     # Configurações do modelo gguf
-    model_url = "https://huggingface.co/models/Hermes-3-Llama-3.1-8B.Q4_K_M.gguf/resolve/main/Hermes-3-Llama-3.1-8B.Q4_K_M.gguf"
+    model_url="https://huggingface.co/NousResearch/Hermes-3-Llama-3.1-8B-GGUF/resolve/main/Hermes-3-Llama-3.1-8B.Q4_K_M.gguf"
     model_filename = "Hermes-3-Llama-3.1-8B.Q4_K_M.gguf"
     
     # Verifica e faz o download do modelo gguf, se necessário
