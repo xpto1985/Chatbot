@@ -17,19 +17,9 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 # Ajuste para evitar erro de OpenMP
 #os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
-# Verificar se os modelos existem e, se não, fazer o download
-download_gguf_model_if_needed(
-    "https://huggingface.co/models/Hermes-3-Llama-3.1-8B.Q4_K_M.gguf/resolve/main/Hermes-3-Llama-3.1-8B.Q4_K_M.gguf", 
-    "Hermes-3-Llama-3.1-8B.Q4_K_M.gguf"
-)
-download_sentence_transformer_model_if_needed("sentence-transformers/paraphrase-multilingual-mpnet-base-v2")
-model_path = "models/Hermes-3-Llama-3.1-8B.Q4_K_M.gguf"
-
-# Carregar o modelo localmente
-llm = Llama(model_path=model_path, n_ctx=2048, verbose=False)
 
 # Função para carregar o modelo de embeddings
-def load_embeddings_model(model_name='sentence-transformers/paraphrase-multilingual-mpnet-base-v2'):
+def load_embeddings_model(model_name='models/sentence-transformers_paraphrase-multilingual-mpnet-base-v2'):
     return HuggingFaceEmbeddings(model_name=model_name)
 
 # Verificar e criar diretórios se necessário
@@ -118,13 +108,19 @@ def choose_faiss_index():
     return db_path
 
 # Executar o chatbot
+
 if __name__ == "__main__":
+
+    # Só após o download, definir os caminhos e carregar os modelos
+    model_path = "models/Hermes-3-Llama-3.1-8B.Q4_K_M.gguf"
+    llm = Llama(model_path=model_path, n_ctx=2048, verbose=False)
+
     verify_and_create_db()  # Verifica e cria os bases de dados FAISS se necessário
     db_path = choose_faiss_index()
 
     if db_path:
-        # Carregar o modelo de embeddings
-        embeddings_model = load_embeddings_model()
+        # Carregar o modelo de embeddings após o download
+        embeddings_model = load_embeddings_model('models/sentence-transformers_paraphrase-multilingual-mpnet-base-v2')
         # Carregar a base de dados FAISS
         db = FAISS.load_local(db_path, embeddings=embeddings_model, allow_dangerous_deserialization=True)
         # Iniciar o chatbot com a base de dados carregada
