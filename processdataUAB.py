@@ -9,7 +9,7 @@ def create_vector_db_from_text(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:
         text = f.read()
     
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=100)
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=700, chunk_overlap=100)
     chunks = text_splitter.split_text(text)
     documents = [Document(page_content=chunk) for chunk in chunks]
     

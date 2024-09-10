@@ -17,13 +17,19 @@ python .\chatbot.py
 
 
 É verificado se existam as bases de dados FAISS na pasta vector_db, se não existirem , os scripts são inicializados e são criadas com base no contexto.
-
 Os contextos estão na pasta contexts.
-
 Para processar os contextos com o FAISS, existe um script para cada contexto. Alguma alteração feita nos contextos ou na forma de separar os contextos em bocados mais pequenos ou maiores, é necessário correr novamente
 para criar novas bases de dados FAISS.
-
-
 O script query.py também funciona como teste, podem colocar a pergunta e verificar qual o contexto que é retirado da base de dados FAISS atual.
 
-Quando existe uma pergunta é feito o print para debug de toda a informação que está a ser recolhida e de onde é gerada a resposta. Depois apagamos a linha.
+----------------------------------------------------------------------------------------------------
+
+FLASK
+python .\app.py 
+
+aceder a um browser http://localhost:5000 e interagir com o modelo
+
+
+-----------------------------------------------------------------------------------------------------------
+
+o histórico das mensagens está a ser guardado no ficheiro history.txt na raiz do projeto.

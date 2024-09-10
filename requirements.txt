@@ -9,3 +9,5 @@ pandas
 numpy
 requests
 openpyxl
+flask
+flask-cors

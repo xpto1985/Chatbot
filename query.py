@@ -32,11 +32,11 @@ def search_faiss_with_embed_query(db, query, embeddings_model='models/sentence-t
 # Exemplo de uso da função search_faiss_with_embed_query
 if __name__ == "__main__":
     # Carregar o índice FAISS existente
-    db_path = 'vector_DB/db_faiss_excel'
+    db_path = 'vector_DB/db_faiss_uab'
     db = FAISS.load_local(db_path, embeddings=embeddings_model, allow_dangerous_deserialization=True)
 
     # Exemplo de consulta
-    query = "Quando é o efolio a de Sistemas Distribuidos?"
+    query = "Que licenciaturas existem na UAB?"
     results = search_faiss_with_embed_query(db, query, embeddings_model)
 
     if results:
